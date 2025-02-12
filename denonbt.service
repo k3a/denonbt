@@ -1,0 +1,19 @@
+[Unit]
+Description=Denon 5xx Bluetooth Controller
+After=network.target
+After=bluetooth.service
+Requires=bluetooth.service
+
+[Service]
+ExecStart=/usr/local/bin/denonbt -hwaddr PUT:YOUR:DENON:MAC:HERE
+Restart=always
+#User=nobody
+DynamicUser=yes
+#Group=uucp
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=yes
+DeviceAllow=char-rfcomm rw
+
+[Install]
+WantedBy=multi-user.target
