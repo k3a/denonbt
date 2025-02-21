@@ -23,7 +23,7 @@ var (
 	listen        = flag.String("listen", "[::]:8500", "Listen to this IP:port")
 	rfcommChannel = flag.Int("rfcomm-channel", 2, "RFCOMM channel (defaults to 2)")
 	hwaddr        = flag.String("hwaddr", "", "Hardware MAC address for bluetooth connection and rfcomm bind")
-	pingInterval  = flag.Duration("ping-interval", time.Minute, "Interval between ping packets (set to 0 to disable)")
+	pingInterval  = flag.Duration("ping-interval", 0, "Interval between ping packets (set to 0 to disable)")
 	//timeout       = flag.Duration("timeout", time.Second, "Timeout for response")
 
 	ser   RFCommSocket
@@ -249,7 +249,7 @@ func bgReader() {
 func main() {
 	flag.Parse()
 
-	slog.Info("denonbt v0.0.3 started")
+	slog.Info("denonbt v0.0.4 started")
 
 	openPort(false)
 
